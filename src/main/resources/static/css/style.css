@@ -1,0 +1,19 @@
+body {
+    background-color: #e6f2e6;
+}
+.container-box {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.header-image {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 1rem 1rem 0 0;
+}
+
+.highlight-row {
+    background-color: #fff3cd !important;
+}

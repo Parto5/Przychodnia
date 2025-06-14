@@ -1,0 +1,21 @@
+INSERT INTO doctor (name, specialization) VALUES ('Dr. Kowalski', 'Fizjoterapeuta');
+INSERT INTO doctor (name, specialization) VALUES ('Dr. Nowak', 'Masażysta');
+INSERT INTO doctor (name, specialization) VALUES ('Dr. Piasecka', 'Kardiolog');
+
+INSERT INTO patient (name) VALUES ('A Nowak');
+INSERT INTO patient (name) VALUES ('B Woźniak');
+
+INSERT INTO app_user (username, password, role, doctor_id, patient_id) VALUES
+('d1', '123', 'DOCTOR', 1, null),
+('p1', '123', 'PATIENT', null, 1),
+('d2', '123', 'DOCTOR', 2, null),
+('p2', '123', 'PATIENT', null, 2);
+INSERT INTO APP_USER (password, username, role, doctor_id, patient_id) VALUES ('123', 'd3', 'DOCTOR', 3, null);
+
+INSERT INTO appointment (doctor_id, date_time, status) VALUES (1, '2025-06-16T10:00:00', 0);
+INSERT INTO appointment (doctor_id, date_time, status) VALUES (1, '2025-06-16T12:00:00', 0);
+INSERT INTO appointment (doctor_id, date_time, status) VALUES (2, '2025-06-16T10:00:00', 0);
+INSERT INTO appointment (doctor_id, date_time, status) VALUES (3, '2025-06-16T12:00:00', 0);
+INSERT INTO appointment (doctor_id, date_time, status) VALUES (1, '2025-06-17T10:00:00', 0);
+INSERT INTO appointment (doctor_id, date_time, status) VALUES (2, '2025-06-17T12:00:00', 0);
+INSERT INTO appointment (doctor_id, date_time, status) VALUES (2, '2025-06-17T10:00:00', 0);

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Nowa wizyta</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+<body class="p-4">
+<h2>Dodaj nową wizytę</h2>
+<form th:action="@{/przychodnia/new}" th:object="${appointment}" method="post">
+    <div class="mb-3">
+        <label for="dateTime">Data i godzina:</label>
+        <input type="datetime-local" class="form-control" id="dateTime" th:field="*{dateTime}" required />
+<!--               th:value="${appointment.dateTime}"-->
+
+    </div>
+    <button type="submit" class="btn btn-success">Dodaj wizytę</button>
+</form>
+</body>
+</html>

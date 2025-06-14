@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Rejestracja</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+<body class="p-5">
+<div class="container">
+    <h2 class="mb-4">Rejestracja nowego użytkownika</h2>
+    <form th:action="@{/register}" th:object="${registrationForm}" method="post">
+        <div class="mb-3">
+            <label for="username" class="form-label">Nazwa użytkownika:</label>
+            <input type="text" th:field="*{username}" class="form-control" id="username" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="password" class="form-label">Hasło:</label>
+            <input type="password" th:field="*{password}" class="form-control" id="password" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="name" class="form-label">Imię i nazwisko:</label>
+            <input type="text" th:field="*{name}" class="form-control" id="name" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="role" class="form-label">Rola:</label>
+            <select th:field="*{role}" class="form-select" id="role">
+                <option value="PATIENT">Pacjent</option>
+                <option value="DOCTOR">Lekarz</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Zarejestruj</button>
+    </form>
+</div>
+</body>
+</html>
