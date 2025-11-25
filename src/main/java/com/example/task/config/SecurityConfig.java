@@ -28,19 +28,22 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
+                                "/",
+                                "/przychodnia",
+                                "/przychodnia/**",
                                 "/login",
                                 "/register",
-                                "/h2-console/**",
                                 "/css/**",
                                 "/js/**",
-                                "/images/**"
+                                "/images/**",
+                                "/h2-console/**"
                         ).permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
                         .loginPage("/login")
                         .loginProcessingUrl("/login")
-                        .defaultSuccessUrl("/przychodnia", true)
+                        .defaultSuccessUrl("/przychodnia", false)
                         .failureUrl("/login?error")
                         .permitAll()
                 )
@@ -53,6 +56,7 @@ public class SecurityConfig {
 
         return http.build();
     }
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {

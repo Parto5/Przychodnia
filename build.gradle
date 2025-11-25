@@ -33,7 +33,8 @@ dependencies {
 	implementation 'org.webjars:bootstrap:5.3.0'
 
 	// Baza danych
-	runtimeOnly 'com.h2database:h2'
+	implementation 'com.h2database:h2'
+
 
 	// Lombok
 	compileOnly 'org.projectlombok:lombok'

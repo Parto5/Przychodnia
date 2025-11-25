@@ -38,30 +38,43 @@ public class AppointmentViewController {
         System.out.println("➡️ Wszedłem do /przychodnia");
 
         if (date == null) {
-            date = LocalDate.of(2025, 6, 16);
+            date = LocalDate.now();
+            //date = LocalDate.of(2025, 6, 16); //domyślna konktretna data
         }
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
-        User user = userService.findByUsername(username);
+        boolean loggedIn = authentication.isAuthenticated() && !username.equals("anonymousUser");
+
+        //dodane, aby można było przeglądać niezalogowanym
+        User user = null;
+        String role = "GUEST";
+        String realName = "Niezalogowany";
+
+        if (loggedIn) {
+            user = userService.findByUsername(username);
+
+            if (user.getRole() == UserRole.PATIENT) {
+                realName = user.getPatient().getName();
+                role = "PATIENT";
+            } else {
+                realName = user.getDoctor().getName();
+                role = "DOCTOR";
+            }
+        }
 
         List<Appointment> appointments = appointmentService.getAppointmentsByDate(date);
 
-        // 🔽 sortowanie: najpierw po nazwisku lekarza, potem po godzinie
+        // sortowanie: najpierw po nazwisku lekarza, potem po godzinie
         appointments.sort((a1, a2) -> {
             int compareDoctor = a1.getDoctor().getName().compareToIgnoreCase(a2.getDoctor().getName());
             if (compareDoctor != 0) return compareDoctor;
             return a1.getDateTime().compareTo(a2.getDateTime());
         });
 
-        model.addAttribute("username", username);
-        if (user.getRole() == UserRole.PATIENT){
-            model.addAttribute("realname", user.getPatient().getName());
-        } else {
-            model.addAttribute("realname", user.getDoctor().getName());
-        }
-        model.addAttribute("role", user.getRole().name());
-        model.addAttribute("uselrId", user.getId());
+        model.addAttribute("username", loggedIn ? username : null);
+        model.addAttribute("realname", realName);
+        model.addAttribute("role", role);
         model.addAttribute("appointments", appointments);
         model.addAttribute("selectedDate", date.toString());
         model.addAttribute("doctors", doctorService.getAllDoctors());
