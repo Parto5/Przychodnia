@@ -3,8 +3,7 @@ package com.example.task.controller;
 import com.example.task.model.Appointment;
 import com.example.task.model.User;
 import com.example.task.model.UserRole;
-import com.example.task.service.AppointmentService;
-import com.example.task.service.UserService;
+import com.example.task.service.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -21,11 +20,13 @@ public class AppointmentViewController {
 
     private final AppointmentService appointmentService;
     private final UserService userService;
+    private final DoctorService doctorService;
 
 
-    public AppointmentViewController(AppointmentService appointmentService, UserService userService) {
+    public AppointmentViewController(AppointmentService appointmentService, UserService userService, DoctorService doctorService) {
         this.appointmentService = appointmentService;
         this.userService = userService;
+        this.doctorService = doctorService;
     }
 
 
@@ -63,6 +64,8 @@ public class AppointmentViewController {
         model.addAttribute("uselrId", user.getId());
         model.addAttribute("appointments", appointments);
         model.addAttribute("selectedDate", date.toString());
+        model.addAttribute("doctors", doctorService.getAllDoctors());
+
 
         return "przychodnia";
     }

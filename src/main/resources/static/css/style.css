@@ -1,19 +1,429 @@
+/* Ogólne tło i typografia */
 body {
     background-color: #e6f2e6;
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: #222;
 }
+
+/* Nagłówek aplikacji */
+.app-header {
+    background-color: #ffffff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    position: sticky; /* użycie position */
+    top: 0;
+    z-index: 100;
+}
+
+.app-header-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Logo + tytuł */
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logo-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #3ba776, #0d6efd);
+    color: #fff;
+    font-weight: 700;
+    display: flex;           /* użycie display:flex */
+    align-items: center;
+    justify-content: center;
+}
+
+.app-title {
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+.app-subtitle {
+    font-size: 0.85rem;
+    margin: 0;
+    color: #555;
+}
+
+/* Główne menu (poziom 1) */
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 0.75rem;
+}
+
+.nav-link-main {
+    display: inline-block;   /* przykład display:inline-block */
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    color: #0d6efd;
+    border: 1px solid transparent;
+}
+
+.nav-link-main:hover {
+    border-color: #0d6efd;
+    background-color: #e7f1ff;
+}
+
+.nav-link-main.active {
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+/* Panel logowania */
+.login-box {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.login-label {
+    font-size: 0.8rem;
+    color: #555;
+}
+
+.login-user {
+    display: inline-block;
+}
+
+.login-realname {
+    margin-left: 0.25rem;
+    font-size: 0.85rem;
+    color: #333;
+}
+
+.login-role-badge {
+    background-color: #d1e7dd;
+    color: #0f5132;
+    border-radius: 999px;
+    padding: 0.1rem 0.6rem;
+    font-size: 0.75rem;
+    margin-left: 0.25rem;
+}
+
+.login-actions .btn {
+    font-size: 0.8rem;
+}
+
+/* Grafika nagłówkowa */
+.app-hero {
+    position: relative;
+    max-width: 1200px;
+    margin: 0.75rem auto 0;
+    padding: 0 1rem;
+}
+
+.header-image {
+    width: 100%;
+    max-height: 220px;
+    object-fit: cover;
+    border-radius: 0.75rem;
+}
+
+/* Overlay na obrazku */
+.hero-overlay {
+    position: absolute;
+    bottom: 1.25rem;
+    left: 2rem;
+    right: 2rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 0.75rem;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+}
+
+.hero-note {
+    margin: 0.25rem 0 0;
+}
+
+/* Główny layout: sidebar + main */
+.app-layout {
+    max-width: 1200px;
+    margin: 1.5rem auto 2rem;
+    display: grid; /* użycie grid */
+    grid-template-columns: 260px 1fr;
+    gap: 1.5rem;
+}
+
+/* Pudełka */
 .container-box {
     background: white;
     padding: 2rem;
     border-radius: 1rem;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-.header-image {
-    width: 100%;
-    max-height: 200px;
-    object-fit: cover;
-    border-radius: 1rem 1rem 0 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Sidebar */
+.sidebar {
+    background-color: #f7fbf7;
+    border-radius: 1rem;
+    padding: 1.25rem;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.sidebar-title {
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Poziom 2 menu */
+.sub-nav ul {
+    list-style: none;
+    margin: 0 0 1rem;
+    padding: 0;
+}
+
+.sub-nav-link {
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin-bottom: 0.35rem;
+}
+
+.sub-nav-link:hover {
+    background-color: #e7f6ea;
+}
+
+.sub-nav-link.active {
+    background-color: #198754;
+    color: #fff;
+}
+
+/* Sekcje w sidebarze */
+.sidebar-section {
+    margin-bottom: 1.25rem;
+}
+
+.badge-date {
+    display: inline-block;
+    padding: 0.15rem 0.6rem;
+    background-color: #d1e7dd;
+    border-radius: 999px;
+    font-size: 0.85rem;
+}
+
+.sidebar-tip {
+    font-size: 0.8rem;
+    color: #555;
+}
+
+/* Lista lekarzy (powtarzalne elementy) */
+.doctor-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.doctor-card {
+    background: #ffffff;
+    border-radius: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.doctor-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 999px;
+    background-color: #0d6efd;
+    color: #fff;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: left;      /* użycie float */
+    margin-right: 0.5rem;
+}
+
+.doctor-info {
+    display: inline-block;
+}
+
+.doctor-name {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.doctor-spec {
+    display: block;
+    font-size: 0.8rem;
+    color: #555;
+}
+
+/* Główna zawartość */
+.main-content {
+    min-height: 400px;
+}
+
+/* Sekcje kontentu (JS przełącza klasy display) */
+.content-section {
+    display: none;
+}
+
+.content-section.is-visible {
+    display: block;  /* użycie display:block */
+}
+
+/* Nagłówki sekcji */
+.section-header h2 {
+    margin-bottom: 0.25rem;
+}
+
+.section-header p {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Formularz filtrowania daty */
+.filter-form {
+    background-color: #ffffff;
+    border-radius: 0.75rem;
+    padding: 0.75rem 0.9rem;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* Tabela wizyt */
+.appointment-table {
+    background-color: #ffffff;
+    border-radius: 0.75rem;
+    overflow: hidden;
+}
+
+.appointment-row:hover {
+    background-color: #f2fbf3;
+}
+
+/* Podświetlenie wizyty zalogowanego pacjenta (Thymeleaf + CSS) */
 .highlight-row {
     background-color: #fff3cd !important;
+}
+
+/* Dodatkowe podświetlenie po kliknięciu (JS dodaje row-emphasis) */
+.row-emphasis {
+    outline: 2px solid #0d6efd;
+}
+
+/* Tag inline – przykład inline-block */
+.tag-inline {
+    display: inline-block;
+    padding: 0.05rem 0.4rem;
+    background-color: #fff3cd;
+    border-radius: 999px;
+    font-size: 0.8rem;
+}
+
+/* Podsumowanie */
+.summary-section {
+    margin-top: 1rem;
+    background-color: #ffffff;
+    border-radius: 0.75rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.summary-list {
+    margin: 0.25rem 0 0;
+    padding-left: 1.3rem;
+    font-size: 0.9rem;
+}
+
+/* Karty informacyjne w panelu pacjenta/lekarza */
+.info-card {
+    background-color: #ffffff;
+    border-radius: 0.75rem;
+    padding: 0.9rem 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    margin-bottom: 0.75rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+}
+
+/* Stopka */
+.app-footer {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #555;
+    padding: 1.5rem 1rem 2rem;
+    background-color: #f7fbf7;
+}
+
+/* ---------- RWD – minimum 3 progi ---------- */
+
+/* Ekrany duże (>= 1200px) – lekko zwiększamy odstępy */
+@media (min-width: 1200px) {
+    .app-header-main {
+        padding-inline: 0;
+    }
+}
+
+/* Tablety (~576–992px) – sidebar pod główną treścią */
+@media (max-width: 991.98px) {
+    .app-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        order: 2;
+    }
+
+    .main-content {
+        order: 1;
+    }
+
+    .hero-overlay {
+        left: 1.5rem;
+        right: 1.5rem;
+    }
+}
+
+/* Telefony (< 576px) – układ pionowy, mniejsze fonty */
+@media (max-width: 575.98px) {
+    .app-header-main {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .login-box {
+        margin-left: 0;
+        flex-wrap: wrap;
+    }
+
+    .main-nav ul {
+        flex-wrap: wrap;
+    }
+
+    .appointment-table {
+        font-size: 0.85rem;
+    }
+
+    .hero-overlay {
+        position: static;
+        margin-top: 0.5rem;
+    }
+
+    .app-hero {
+        padding-inline: 0.5rem;
+    }
 }
