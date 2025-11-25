@@ -47,8 +47,18 @@
             </div>
 
             <div class="login-actions">
-                <a href="/login" class="btn btn-sm btn-outline-primary" title="Przejdź do ekranu logowania">Logowanie</a>
-                <a href="/register" class="btn btn-sm btn-outline-success" title="Załóż nowe konto w systemie">Rejestracja</a>
+                <!-- Jeśli NIE zalogowany -->
+                <div th:if="${username == null}">
+                    <a href="/login" class="btn btn-sm btn-outline-primary">Logowanie</a>
+                    <a href="/register" class="btn btn-sm btn-outline-success">Rejestracja</a>
+                </div>
+
+                <!-- Jeśli zalogowany -->
+                <div th:if="${username != null}">
+                    <form action="/logout" method="post">
+                        <button type="submit" class="btn btn-sm btn-outline-danger">Wyloguj</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

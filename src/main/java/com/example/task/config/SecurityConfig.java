@@ -28,14 +28,15 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
+                                "/css/**",
+                                "/js/**",
+                                "/images/**",
                                 "/",
                                 "/przychodnia",
                                 "/przychodnia/**",
                                 "/login",
                                 "/register",
-                                "/css/**",
-                                "/js/**",
-                                "/images/**",
+                                "/webjars/**",
                                 "/h2-console/**"
                         ).permitAll()
                         .anyRequest().authenticated()
@@ -48,12 +49,12 @@ public class SecurityConfig {
                         .permitAll()
                 )
                 .logout(logout -> logout
-                        .logoutSuccessUrl("/login?logout")
+                        .logoutSuccessUrl("/przychodnia")
                         .permitAll()
                 )
                 .headers(headers -> headers.frameOptions().disable())
-                .csrf(csrf -> csrf.ignoringRequestMatchers("/h2-console/**"));
-
+                .csrf(csrf -> csrf.disable());
+                //.csrf(csrf -> csrf.ignoringRequestMatchers("/h2-console/**"));
         return http.build();
     }
 
