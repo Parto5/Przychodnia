@@ -36,6 +36,8 @@ public class SecurityConfig {
                                 "/przychodnia/**",
                                 "/login",
                                 "/register",
+                                "o-przychodni",
+                                "kontakt",
                                 "/webjars/**",
                                 "/h2-console/**"
                         ).permitAll()
