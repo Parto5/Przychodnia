@@ -16,6 +16,7 @@ public class StaticPagesController {
     @GetMapping("/o-przychodni")
     public String about(Model model) throws
             IOException {
+        System.out.println("➡️ Wszedłem do /o-przychodni");
         Path path = Paths.get("src/main/resources/static/data/o-przychodni.txt");
         List<String> lines = Files.readAllLines(path);
         model.addAttribute("infoLines", lines);
@@ -24,6 +25,7 @@ public class StaticPagesController {
 
     @GetMapping("/kontakt")
     public String contact() {
+        System.out.println("➡️ Wszedłem do /kontakt");
         return "kontakt";
     }
 }
