@@ -32,9 +32,11 @@ dependencies {
 	// Styl CSS przez WebJars (jeśli używasz Bootstrapa)
 	implementation 'org.webjars:bootstrap:5.3.0'
 
-	// Baza danych
+	// Baza danych (lokalnie na komputerze
 	implementation 'com.h2database:h2'
 
+	// Baza danych (online na serwerze Render.com)
+	implementation 'org.postgresql:postgresql'
 
 	// Lombok
 	compileOnly 'org.projectlombok:lombok'
