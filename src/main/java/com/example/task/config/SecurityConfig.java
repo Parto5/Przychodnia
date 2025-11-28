@@ -31,6 +31,7 @@ public class SecurityConfig {
                                 "/css/**",
                                 "/js/**",
                                 "/images/**",
+                                "/data/**",
                                 "/",
                                 "/przychodnia",
                                 "/przychodnia/**",
