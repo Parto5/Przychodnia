@@ -31,14 +31,15 @@ public class SecurityConfig {
                                 "/css/**",
                                 "/js/**",
                                 "/images/**",
-                                "/data/**",
                                 "/",
                                 "/przychodnia",
                                 "/przychodnia/**",
                                 "/login",
                                 "/register",
-                                "o-przychodni",
-                                "kontakt",
+                                "/o-przychodni",
+                                "/o-przychodni/**",
+                                "/kontakt",
+                                "/kontakt/**",
                                 "/webjars/**",
                                 "/h2-console/**"
                         ).permitAll()

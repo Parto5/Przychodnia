@@ -28,4 +28,9 @@ public class StaticPagesController {
         System.out.println("➡️ Wszedłem do /kontakt");
         return "kontakt";
     }
+
+    @GetMapping("/")
+    public String homeRedirect() {
+        return "redirect:/przychodnia";
+    }
 }
