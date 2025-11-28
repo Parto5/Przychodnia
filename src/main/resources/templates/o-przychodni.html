@@ -41,17 +41,7 @@
     <div class="p-4 shadow rounded bg-white">
         <h2 class="mb-4">O naszej przychodni</h2>
 
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at sollicitudin dolor.
-            Phasellus nec tortor quis lorem placerat suscipit. Duis gravida lorem vel risus consequat,
-            ut dapibus leo faucibus.
-        </p>
-
-        <p>
-            Suspendisse potenti. Sed sed dui dui. Donec interdum sollicitudin ligula, at volutpat
-            tortor ultricies nec. Praesent cursus lorem at sapien vulputate, quis pretium sapien
-            pellentesque.
-        </p>
+        <p th:each="line : ${infoLines}" th:text="${line}"></p>
 
         <h4 class="mt-4">Dlaczego warto nas wybrać?</h4>
 
