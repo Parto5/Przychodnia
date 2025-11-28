@@ -5,9 +5,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 
 @Controller
@@ -17,9 +14,16 @@ public class StaticPagesController {
     public String about(Model model) throws
             IOException {
         System.out.println("➡️ Wszedłem do /o-przychodni");
-        Path path = Paths.get("src/main/resources/static/data/o-przychodni.txt");
-        List<String> lines = Files.readAllLines(path);
-        model.addAttribute("infoLines", lines);
+        ClassLoader classLoader = getClass().getClassLoader();
+        try (var inputStream = classLoader.getResourceAsStream("data/o-przychodni.txt")){
+            if (inputStream == null) {
+                model.addAttribute("infoLines", List.of("Brak danych do wyświetlenia"));
+            } else {
+                List<String> lines = new java.io.BufferedReader(new java.io.InputStreamReader(inputStream))
+                        .lines().toList();
+                model.addAttribute("infoLines", lines);
+            }
+        }
         return "o-przychodni";
     }
 
