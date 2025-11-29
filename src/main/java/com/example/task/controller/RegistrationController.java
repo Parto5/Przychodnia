@@ -64,6 +64,6 @@ public class RegistrationController {
 
         request.login(user.getUsername(), user.getPassword());
 
-        return "redirect:/przychodnia";
+        return "redirect:/przychodnia?registered=1";
     }
 }

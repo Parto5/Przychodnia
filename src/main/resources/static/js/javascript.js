@@ -25,15 +25,20 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    const urlParam = new URLSearchParams(window.location.search);
+    const isRegistered = urlParam.get("registered") === "1";
     // Ustaw sekcję domyślną w zależności od roli
-    const role = document.body.dataset.role;
-    if (role === 'PATIENT') {
-        showSection('section-patient');
-    } else if (role === 'DOCTOR') {
-        showSection('section-doctor');
-    } else {
-        showSection('section-dashboard');
+    if (isRegistered)
+    {const role = document.body.dataset.role;
+        if (role === 'PATIENT') {
+            showSection('section-patient');
+        } else if (role === 'DOCTOR') {
+            showSection('section-doctor');
+        } else {
+            showSection('section-dashboard');
+        }
     }
+
 
     // 2) Kliknięcie wiersz tabeli – zmiana wyglądu elementu (dodanie klasy)
     const rows = document.querySelectorAll('.appointment-row');

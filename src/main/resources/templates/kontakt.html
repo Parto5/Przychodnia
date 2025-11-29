@@ -12,6 +12,8 @@
 <!-- wklejony wspólny nagłówek z fragments -->
 <div th:replace="fragments/header :: siteHeader(activePage = 'contact')"></div>
 
+<div th:replace="fragments/logo :: siteLogo"></div>
+
 <div class="container my-5">
 
     <div class="p-4 shadow rounded bg-white">
@@ -36,9 +38,7 @@
 
 </div>
 
-<footer class="app-footer">
-    <p>&copy; 2025 – Przychodnia Online</p>
-</footer>
+<div th:replace="fragments/footer :: siteFooter"></div>
 
 </body>
 </html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<body>
+<footer th:fragment="siteFooter">
+    <div class="app-footer">
+        <p>
+            &copy; <span th:text="${#temporals.year(#temporals.createNow())}">2025</span>
+            Przychodnia Online – projekt na przedmiot <strong>Systemy webowe</strong>.
+        </p>
+        <p>
+            Zrobione zgodnie z zaleceniami
+            <a href="https://kapalka.psor24.eu/sites/default/files/zalaczniki/34/zad-lab.pdf">zadania</a>.
+        </p>
+    </div>
+</footer>
+</body>
+</html>

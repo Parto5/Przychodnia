@@ -13,20 +13,7 @@
 <!-- wklejony wspólny nagłówek z fragments -->
 <div th:replace="fragments/header :: siteHeader(activePage='home')"></div>
 
-<div class="app-hero">
-    <img src="https://przychodnianr1.pl/images/bg-image/mainbanner1-1-1.webp"
-         alt="Grafika przedstawiająca przychodnię medyczną"
-         class="header-image">
-    <div class="hero-overlay">
-        <p>
-            <strong>Witaj w panelu rejestracji online.</strong>
-            Możesz <em>przeglądać dostępne wizyty</em>, <u>rezerwować terminy</u> u lekarzy.
-        </p>
-        <p class="hero-note">
-            <mark>Podpowiedź:</mark> kliknij w wiersz wizyty, aby ją tymczasowo wyróżnić wizualnie.
-        </p>
-    </div>
-</div>
+<div th:replace="fragments/logo :: siteLogo"></div>
 
 <div class="app-layout container my-4">
     <!-- Sidebar (poziom 2 menu) -->
@@ -275,16 +262,7 @@
     </main>
 </div>
 
-<footer class="app-footer">
-    <p>
-        &copy; <span th:text="${#temporals.year(#temporals.createNow())}">2025</span>
-        Przychodnia Online – projekt na przedmiot <strong>Systemy webowe</strong>.
-    </p>
-    <p>
-        Zrobione zgodnie z zaleceniami
-        <a href="https://kapalka.psor24.eu/sites/default/files/zalaczniki/34/zad-lab.pdf">zadania</a>.
-    </p>
-</footer>
+<div th:replace="fragments/footer :: siteFooter"></div>
 
 
 </body>
