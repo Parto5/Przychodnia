@@ -5,60 +5,13 @@
     <title>Przychodnia – panel wizyt</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
+    <!-- JavaScript – logika UI (widoczność, wygląd, struktura, nowe informacje) -->
+    <script type="text/javascript" src="/js/javascript.js"></script>
 </head>
 <body th:attr="data-role=${role}">
-<header class="app-header">
-    <div class="app-header-main">
-        <div class="logo-area">
-            <div class="logo-circle">P</div>
-            <div>
-                <h1 class="app-title">Przychodnia Online</h1>
-                <p class="app-subtitle">
-                    <strong>Szybka rejestracja</strong>
-                </p>
-            </div>
-        </div>
 
-        <!-- Górne menu (poziom 1) -->
-        <nav class="main-nav">
-            <ul>
-                <li><a href="/przychodnia" class="nav-link-main active">Strona główna</a></li>
-                <li><a href="/o-przychodni" class="nav-link-main">O przychodni</a></li>
-                <li><a href="/kontakt" class="nav-link-main">Kontakt</a></li>
-            </ul>
-        </nav>
-
-        <!-- Panel logowania / info o użytkowniku -->
-        <div class="login-box">
-            <div th:if="${username != null}">
-                <span class="login-label">Zalogowany jako:</span>
-                <span class="login-user">
-                    <strong th:text="${username}">user</strong>
-                    <span class="login-realname" th:text="${realname}">Imię Nazwisko</span>
-                </span>
-                <span class="login-role-badge" th:text="${role}">ROLA</span>
-            </div>
-            <div th:if="${username == null}">
-                <span class="login-label">Nie jesteś zalogowany.</span>
-            </div>
-
-            <div class="login-actions">
-                <!-- Jeśli NIE zalogowany -->
-                <div th:if="${username == null}">
-                    <a href="/login" class="btn btn-sm btn-outline-primary">Logowanie</a>
-                    <a href="/register" class="btn btn-sm btn-outline-success">Rejestracja</a>
-                </div>
-
-                <!-- Jeśli zalogowany -->
-                <div th:if="${username != null}">
-                    <form action="/logout" method="post">
-                        <button type="submit" class="btn btn-sm btn-outline-danger">Wyloguj</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
+<!-- wklejony wspólny nagłówek z fragments -->
+<div th:replace="fragments/header :: siteHeader(activePage='home')"></div>
 
 <div class="app-hero">
     <img src="https://przychodnianr1.pl/images/bg-image/mainbanner1-1-1.webp"
@@ -333,86 +286,6 @@
     </p>
 </footer>
 
-<!-- JavaScript – logika UI (widoczność, wygląd, struktura, nowe informacje) -->
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // 1) Dwupoziomowe menu – przełączanie sekcji (zmiana widoczności elementów)
-        const sectionButtons = document.querySelectorAll('.sub-nav-link');
-        const sections = document.querySelectorAll('.content-section');
 
-        function showSection(targetId) {
-            sections.forEach(sec => sec.classList.remove('is-visible'));
-            const target = document.getElementById(targetId);
-            if (target) {
-                target.classList.add('is-visible');
-            }
-
-            sectionButtons.forEach(btn => btn.classList.remove('active'));
-            sectionButtons.forEach(btn => {
-                if (btn.dataset.target === targetId) {
-                    btn.classList.add('active');
-                }
-            });
-        }
-
-        sectionButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const targetId = button.dataset.target;
-                showSection(targetId);
-            });
-        });
-
-        // Ustaw sekcję domyślną w zależności od roli
-        const role = document.body.dataset.role;
-        if (role === 'PATIENT') {
-            showSection('section-patient');
-        } else if (role === 'DOCTOR') {
-            showSection('section-doctor');
-        } else {
-            showSection('section-dashboard');
-        }
-
-        // 2) Kliknięcie wiersz tabeli – zmiana wyglądu elementu (dodanie klasy)
-        const rows = document.querySelectorAll('.appointment-row');
-        rows.forEach(row => {
-            row.addEventListener('click', () => {
-                row.classList.toggle('row-emphasis');
-            });
-        });
-
-        // 3) Dynamiczne podsumowanie – zmiana struktury DOM i nowe informacje
-        const statsList = document.getElementById('dynamic-stats');
-        if (statsList) {
-            let openCount = 0;
-            let reservedCount = 0;
-            let acceptedCount = 0;
-
-            rows.forEach(row => {
-                const status = row.dataset.status;
-                if (status === 'Open') {
-                    openCount++;
-                } else if (status === 'Reserved') {
-                    reservedCount++;
-                } else if (status === 'Accepted') {
-                    acceptedCount++;
-                }
-            });
-
-            statsList.innerHTML = '';
-
-            const liOpen = document.createElement('li');
-            liOpen.textContent = 'Wolne terminy: ' + openCount;
-            statsList.appendChild(liOpen);
-
-            const liReserved = document.createElement('li');
-            liReserved.textContent = 'Zarezerwowane wizyty (oczekujące): ' + reservedCount;
-            statsList.appendChild(liReserved);
-
-            const liAccepted = document.createElement('li');
-            liAccepted.textContent = 'Zaakceptowane wizyty: ' + acceptedCount;
-            statsList.appendChild(liAccepted);
-        }
-    });
-</script>
 </body>
 </html>

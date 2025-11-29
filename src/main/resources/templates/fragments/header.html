@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<body>
+<header th:fragment="siteHeader">
+    <div class="app-header">
+        <div class="app-header-main">
+            <div class="logo-area">
+                <div class="logo-circle">P</div>
+                <div>
+                    <h1 class="app-title">Przychodnia Online</h1>
+                    <p class="app-subtitle">
+                        <strong>Szybka rejestracja</strong>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Górne menu (poziom 1) -->
+            <nav class="main-nav">
+                <ul>
+                    <li>
+                        <a href="/przychodnia"
+                           th:classappend="${activePage == 'home'} ? ' active' : ''"
+                           class="nav-link-main">
+                            Strona główna
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/o-przychodni"
+                           th:classappend="${activePage == 'info'} ? ' active' : ''"
+                           class="nav-link-main">
+                            O przychodni
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/kontakt"
+                           th:classappend="${activePage == 'contact'} ? ' active' : ''"
+                           class="nav-link-main">
+                            Kontakt
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Panel logowania / info o użytkowniku -->
+            <div class="login-box">
+                <div th:if="${username != null}">
+                    <span class="login-label">Zalogowany jako:</span>
+                    <span class="login-user">
+                        <strong th:text="${username}">user</strong>
+                        <span class="login-realname" th:text="${realname}">Imię Nazwisko</span>
+                    </span>
+                    <span class="login-role-badge" th:text="${role}">ROLA</span>
+                </div>
+                <div th:if="${username == null}">
+                    <span class="login-label">Nie jesteś zalogowany.</span>
+                </div>
+
+                <div class="login-actions">
+                    <!-- Jeśli NIE zalogowany -->
+                    <div th:if="${username == null}">
+                        <a href="/login" class="btn btn-sm btn-outline-primary">Logowanie</a>
+                        <a href="/register" class="btn btn-sm btn-outline-success">Rejestracja</a>
+                    </div>
+
+                    <!-- Jeśli zalogowany -->
+                    <div th:if="${username != null}">
+                        <form action="/logout" method="post">
+                            <button type="submit" class="btn btn-sm btn-outline-danger">Wyloguj</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+</body>
+</html>

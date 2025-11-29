@@ -10,31 +10,8 @@
 
 <body>
 
-<header class="app-header">
-    <div class="app-header-main">
-
-        <div class="logo-area">
-            <div class="logo-circle">P</div>
-            <div>
-                <h1 class="app-title">Przychodnia Online</h1>
-                <p class="app-subtitle">Informacje o naszej placówce</p>
-            </div>
-        </div>
-
-        <nav class="main-nav">
-            <ul>
-                <li><a href="/przychodnia" class="nav-link-main">Strona główna</a></li>
-                <li><a href="/o-przychodni" class="nav-link-main active">O przychodni</a></li>
-                <li><a href="/kontakt" class="nav-link-main">Kontakt</a></li>
-            </ul>
-        </nav>
-
-        <div class="login-actions">
-            <a href="/login" class="btn btn-sm btn-outline-primary">Logowanie</a>
-            <a href="/register" class="btn btn-sm btn-outline-success">Rejestracja</a>
-        </div>
-    </div>
-</header>
+<!-- wklejony wspólny nagłówek z fragments -->
+<div th:replace="fragments/header :: siteHeader(activePage='info')"></div>
 
 <div class="container my-5">
 
