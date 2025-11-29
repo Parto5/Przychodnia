@@ -6,6 +6,10 @@ body {
     color: #222;
 }
 
+td {
+    height: 48px;
+}
+
 /* Nagłówek aplikacji */
 .app-header {
     background-color: #ffffff;

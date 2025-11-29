@@ -131,7 +131,11 @@
                         th:attr="data-status=${a.status.name()}">
                         <td th:text="${#temporals.format(a.dateTime, 'HH:mm')}">10:00</td>
                         <td th:text="${a.doctor.name}">Dr. Test</td>
-                        <td th:text="${a.status.name()}">OPEN</td>
+                        <td th:switch="${a.status}">
+                            <span th:case="${a.status.Open}">Wolne</span>
+                            <span th:case="${a.status.Reserved}">Zarezerwowane</span>
+                            <span th:case="${a.status.Confirmed}">Zatwierdzone</span>
+                        </td>
 
                         <td th:if="${role == 'DOCTOR'}"
                             th:text="${a.reservedBy != null ? a.reservedBy.getName() : '-'}">-</td>
@@ -210,9 +214,9 @@
                 <h3>Jak zarezerwować wizytę?</h3>
                 <ol>
                     <li>Wybierz <strong>datę</strong> wizyty w filtrze nad tabelą.</li>
-                    <li>Znajdź w tabeli wiersz z oznaczeniem <mark>Open</mark>.</li>
+                    <li>Znajdź w tabeli wiersz z oznaczeniem <mark>Wolne</mark>.</li>
                     <li>Kliknij przycisk <em>Rezerwuj</em> przy wybranym terminie.</li>
-                    <li>Poczekaj na <u>akceptację lekarza</u> (status zmieni się na <code>Accepted</code>).</li>
+                    <li>Poczekaj na <u>akceptację lekarza</u> (status zmieni się na <code>Zaakceptowane</code>).</li>
                 </ol>
                 <p>
                     Jeśli nie widzisz przycisku <strong>Rezerwuj</strong>, upewnij się, że jesteś zalogowany jako pacjent.
@@ -224,7 +228,6 @@
                 <ul>
                     <li>Możliwość rezerwacji wizyt bez wychodzenia z domu.</li>
                     <li>Przejrzysta tabela z godzinami i lekarzami.</li>
-                    <li>Podświetlenie Twoich wizyt na liście (wiersze w kolorze <span class="tag-inline">żółtym</span>).</li>
                 </ul>
             </article>
         </section>
