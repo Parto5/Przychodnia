@@ -62,8 +62,15 @@ public class AppointmentViewController {
                 role = "DOCTOR";
             }
         }
-
-        List<Appointment> appointments = appointmentService.getAppointmentsByDate(date);
+        List<Appointment> appointments;
+        if (user!= null && user.getRole() == UserRole.DOCTOR) {
+            appointments = appointmentService.getAppointmentsByDoctorAndDate(
+              user.getDoctor().getId(), date
+            );
+        }
+        else{
+            appointments = appointmentService.getAppointmentsByDate(date);
+        }
 
         // sortowanie: najpierw po nazwisku lekarza, potem po godzinie
         appointments.sort((a1, a2) -> {

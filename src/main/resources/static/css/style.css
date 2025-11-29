@@ -10,6 +10,10 @@ td {
     height: 48px;
 }
 
+.max-leftright {
+    max-width: 1168px;
+}
+
 /* Nagłówek aplikacji */
 .app-header {
     background-color: #ffffff;

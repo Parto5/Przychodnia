@@ -13,5 +13,11 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
     List<Appointment> findByDateTimeBetweenAndStatus(
             LocalDateTime start, LocalDateTime end, AppointmentStatus status);
     List<Appointment> findByDateTimeBetween(
-            LocalDateTime start, LocalDateTime end);
+            LocalDateTime start,
+            LocalDateTime end);
+
+    List<Appointment> findByDoctorIdAndDateTimeBetween(
+            Long doctorId,
+            LocalDateTime start,
+            LocalDateTime end);
 }

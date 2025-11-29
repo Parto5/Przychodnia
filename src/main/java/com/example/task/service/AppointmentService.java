@@ -103,4 +103,12 @@ public class AppointmentService {
 
         appointmentRepository.save(appointment);
     }
+
+    public List<Appointment> getAppointmentsByDoctorAndDate(Long id, LocalDate date) {
+        return appointmentRepository.findByDoctorIdAndDateTimeBetween(
+                id,
+                date.atStartOfDay(),
+                date.atTime(23,59)
+        );
+    }
 }
