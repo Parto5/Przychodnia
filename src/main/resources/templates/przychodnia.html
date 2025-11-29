@@ -11,9 +11,9 @@
 <body th:attr="data-role=${role}">
 
 <!-- wklejony wspólny nagłówek z fragments -->
-<div th:replace="fragments/header :: siteHeader(activePage='home')"></div>
+<div th:replace="~{fragments/header :: siteHeader(activePage='home')}"></div>
 
-<div th:replace="fragments/logo :: siteLogo"></div>
+<div th:replace="~{fragments/logo :: siteLogo}"></div>
 
 <div class="app-layout container my-4">
     <!-- Sidebar (poziom 2 menu) -->
@@ -262,7 +262,7 @@
     </main>
 </div>
 
-<div th:replace="fragments/footer :: siteFooter"></div>
+<div th:replace="~{fragments/footer :: siteFooter}"></div>
 
 
 </body>

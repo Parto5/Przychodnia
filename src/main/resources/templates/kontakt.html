@@ -10,9 +10,9 @@
 
 <body>
 <!-- wklejony wspólny nagłówek z fragments -->
-<div th:replace="fragments/header :: siteHeader(activePage = 'contact')"></div>
+<div th:replace="~{fragments/header :: siteHeader(activePage = 'contact')}"></div>
 
-<div th:replace="fragments/logo :: siteLogo"></div>
+<div th:replace="~{fragments/logo :: siteLogo}"></div>
 
 <div class="container my-5">
 
@@ -38,7 +38,7 @@
 
 </div>
 
-<div th:replace="fragments/footer :: siteFooter"></div>
+<div th:replace="~{fragments/footer :: siteFooter}"></div>
 
 </body>
 </html>
